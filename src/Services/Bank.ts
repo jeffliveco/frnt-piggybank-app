@@ -1,4 +1,5 @@
 import CashRequest from "../Model/CashRequest";
+import * as Http from '../Util/Http';
 
 export interface IBank {
     addCash(request: CashRequest): Promise<string>;
@@ -8,14 +9,27 @@ export interface IBank {
 
 export class Bank implements IBank {
 
-    addCash(request: CashRequest): Promise<string> {
-        throw new Error("Method not implemented.");
-    }
-    getTotalCash(): Promise<number> {
-        throw new Error("Method not implemented.");
-    }
-    getTotalCashByCoin(coin: string): Promise<number> {
-        throw new Error("Method not implemented.");
+    private url: string = 'http://localhost:8080/piggy-bank';
+    private nameService: string = '/bank'
+
+    async addCash(request: CashRequest): Promise<string> {
+        const nameMethod: string = '/add-cash';
+        const urlFinal: string = this.url.concat(this.nameService, nameMethod);
+        const response = await Http.post<CashRequest, string>(urlFinal, request);
+        return Promise.resolve(response.data);
     }
 
+    async getTotalCash(): Promise<number> {
+        const nameMethod: string = '/account';
+        const urlFinal: string = this.url.concat(this.nameService, nameMethod);
+        const response = await Http.get<number>(urlFinal, {});
+        return Promise.resolve(response.data);
+    }
+
+    async getTotalCashByCoin(coin: string): Promise<number> {
+        const nameMethod: string = `/account/${coin}`;
+        const urlFinal: string = this.url.concat(this.nameService, nameMethod);
+        const response = await Http.get<number>(urlFinal, {});
+        return Promise.resolve(response.data);
+    }
 }

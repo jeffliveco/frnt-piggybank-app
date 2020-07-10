@@ -1,14 +1,26 @@
+import * as Http from '../Util/Http';
+
 export interface ITracking {
     getTotalCoins(): Promise<number>;
-    getTotalCoinsByCoin(): Promise<number>;
+    getTotalCoinsByCoin(coin: string): Promise<number>;
 }
 
 export class Tracking implements ITracking {
-    getTotalCoins(): Promise<number> {
-        throw new Error("Method not implemented.");
+    private url: string = 'http://localhost:8080/piggy-bank';
+    private nameService: string = '/tracking'
+
+    async getTotalCoins(): Promise<number> {
+        const nameMethod: string = '/coin';
+        const urlFinal: string = this.url.concat(this.nameService, nameMethod);
+        const response = await Http.get<number>(urlFinal, {});
+        return Promise.resolve(response.data);
     }
-    getTotalCoinsByCoin(): Promise<number> {
-        throw new Error("Method not implemented.");
+
+    async getTotalCoinsByCoin(coin: string): Promise<number> {
+        const nameMethod: string = `/coin/${coin}`;
+        const urlFinal: string = this.url.concat(this.nameService, nameMethod);
+        const response = await Http.get<number>(urlFinal, {});
+        return Promise.resolve(response.data);
     }
 
 }
