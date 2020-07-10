@@ -1,0 +1,14 @@
+.CoinSelector {
+    width: 95%;
+    background-color: #f3f3f3;
+    border-radius: 20px;
+}
+
+.CoinSelector_Button {
+    margin: 5px;
+    background-color: burlywood;
+    border: 0;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+}

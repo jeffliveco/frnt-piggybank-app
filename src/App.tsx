@@ -3,9 +3,9 @@ import { Provider } from 'mobx-react';
 import './App.css';
 
 import ManagerStore from './Store/ManagerStore';
-import CoinSelector from './UI/Component/CoinSelector';
-import TotalBalance from './UI/Component/TotalBalance';
-import CoinDetail from './UI/Component/CoinDetail';
+import CoinSelector from './UI/Component/CoinSelector/CoinSelector';
+import TotalBalance from './UI/Component/TotalBalance/TotalBalance';
+import CoinDetail from './UI/Component/CoinDetail/CoinDetail';
 
 function App():ReactElement {
   return (

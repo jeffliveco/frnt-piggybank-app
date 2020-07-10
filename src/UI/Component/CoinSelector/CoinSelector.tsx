@@ -1,8 +1,9 @@
 import { observer, inject } from "mobx-react";
 import React, { ReactElement, useState, useCallback } from "react";
-import ManagerStore from "../../Store/ManagerStore";
-import CoinSelectorView from "../../Store/Component/CoinSelectorView";
-import Coin from "../../Model/Coin";
+import Coin from "../../../Model/Coin";
+import ManagerStore from "../../../Store/ManagerStore";
+import CoinSelectorView from "../../../Store/Component/CoinSelectorView";
+import './CoinSelector.css'
 
 type CoinSelectorProps = {
     store?: ManagerStore;
@@ -24,10 +25,11 @@ const CoinSelector = inject('store')(observer((props: CoinSelectorProps): ReactE
     }, [viewModel]);
 
     return (
-        <div>
+        <div className="CoinSelector">
+            <h4>Insert coin</h4>
             {viewModel.coins.map((coin: Coin, index: number) => {
                 return (
-                    <button key={`button-${index}`} onClick={() => onHandleClick(coin.value)}>
+                    <button className="CoinSelector_Button" key={`button-${index}`} onClick={() => onHandleClick(coin.value)}>
                         COIN {coin.name}
                     </button>
                 );
