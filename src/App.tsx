@@ -1,26 +1,54 @@
 import React, { ReactElement } from 'react';
-import { Provider, observer } from 'mobx-react';
-import logo from './logo.svg';
+import { Provider } from 'mobx-react';
 import './App.css';
+
+import ManagerStore from './Store/ManagerStore';
+import CoinSelector from './UI/Component/CoinSelector';
 
 function App():ReactElement {
   return (
-    <Provider store={{ user: 'XXX' }}>
+    <Provider store={new ManagerStore()}>
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.tsx</code> and save to reload.
+            Piggy Bank
           </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
         </header>
+        <section className="App-content">
+          <CoinSelector />
+          <div>
+            <div>
+              <div>
+                COIN 50
+                <span>0</span>
+                <span>$0</span>
+              </div>
+              <div>
+                COIN 100
+                <span>0</span>
+                <span>$0</span>
+              </div>
+              <div>
+                COIN 200
+                <span>0</span>
+                <span>$0</span>
+              </div>
+              <div>
+                COIN 500
+                <span>0</span>
+                <span>$0</span>
+              </div>
+              <div>
+                COIN 1000
+                <span>0</span>
+                <span>$0</span>
+              </div>
+            </div>
+            <div>
+              TOTAL $0
+            </div>
+          </div>
+        </section>
       </div>
     </Provider>
   );
