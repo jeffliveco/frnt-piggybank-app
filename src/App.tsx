@@ -4,6 +4,8 @@ import './App.css';
 
 import ManagerStore from './Store/ManagerStore';
 import CoinSelector from './UI/Component/CoinSelector';
+import TotalBalance from './UI/Component/TotalBalance';
+import CoinDetail from './UI/Component/CoinDetail';
 
 function App():ReactElement {
   return (
@@ -16,37 +18,9 @@ function App():ReactElement {
         </header>
         <section className="App-content">
           <CoinSelector />
-          <div>
-            <div>
-              <div>
-                COIN 50
-                <span>0</span>
-                <span>$0</span>
-              </div>
-              <div>
-                COIN 100
-                <span>0</span>
-                <span>$0</span>
-              </div>
-              <div>
-                COIN 200
-                <span>0</span>
-                <span>$0</span>
-              </div>
-              <div>
-                COIN 500
-                <span>0</span>
-                <span>$0</span>
-              </div>
-              <div>
-                COIN 1000
-                <span>0</span>
-                <span>$0</span>
-              </div>
-            </div>
-            <div>
-              TOTAL $0
-            </div>
+          <div className="App-detail">
+            <CoinDetail />
+            <TotalBalance />
           </div>
         </section>
       </div>

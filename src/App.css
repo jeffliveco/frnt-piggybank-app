@@ -24,9 +24,17 @@
 
 .App-content {
   background-color: #FFFFFF;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 50vw;
   height: 40vh;
+  border-radius: 50px;
+}
+
+.App-detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
